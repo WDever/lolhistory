@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/info_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/tier_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:contentDescription="tier image"
+            android:src="@drawable/emblem_diamond"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="5dp"
+            android:text="미래에는만수르"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/tier_image"
+            app:layout_constraintTop_toTopOf="@+id/tier_image" />
+
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="RANKED_SOLO_5X5"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toRightOf="@id/tier_image"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
+
+        <TextView
+            android:id="@+id/tier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="DIAMOND"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/tier_image"
+            app:layout_constraintTop_toBottomOf="@+id/info" />
+
+        <TextView
+            android:id="@+id/tier_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="16LP"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@+id/tier"
+            app:layout_constraintLeft_toRightOf="@+id/tier"
+            app:layout_constraintTop_toBottomOf="@id/tier" />
+
+        <TextView
+            android:id="@+id/win_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="57.50%"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/tier_image"
+            app:layout_constraintTop_toBottomOf="@id/tier" />
+
+        <TextView
+            android:id="@+id/win_lose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="46승 34패"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/win_rate"
+            app:layout_constraintLeft_toRightOf="@+id/win_rate"
+            app:layout_constraintTop_toBottomOf="@id/win_rate" />
+
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tier_image">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_history"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/input_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <EditText
+            android:id="@+id/et_input_summoner"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_summoner_name"
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@id/btn_input_summoner"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <Button
+            android:id="@+id/btn_input_summoner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_input_summoner" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
